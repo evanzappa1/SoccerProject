@@ -1,0 +1,295 @@
+<!doctype html>
+<head>
+  <meta charset = "utf-8">
+  <title> Soccer Grid Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <div class = "ribbon">
+    <h1 class = "ribbon-text">
+      Soccer Grid Game
+    </h1>
+    <button class = "how-to-button" onclick="openPopup()">
+      How to play
+    </button>
+  </div>
+  <div id="popup" class="how-to-container">
+    <div class="popup-content">
+      <span class="close" onclick="closePopup()">&times;</span>
+      <h2>How to play</h2>
+      <p>These are the rules.</p>
+    </div>
+  </div>
+  <div id="search-popup" class="popup-container">
+    <div class = "select-btn">
+      <i class = "uil uil-angle-down"></i>
+    </div>
+    <div class="popup-content">
+      <span class="close" onclick="closeSearch()">&times;</span>
+      <h2>
+        Search
+      </h2>
+      <div class = "search">
+        <i class = "uil uil-search">
+          <input type = "text" placeholder = "Search">
+        </i>
+      </div>
+      <ul class = "options">
+      </ul>
+    </div>
+  </div>
+
+
+
+  <div class = "table-container">
+    <table>
+      <tr>
+        <th colspan="5" style="font-size: 28px;"></th>
+      </tr>
+
+      <tr>
+        <td>
+          <div></div>
+        </td>
+        <td>
+          <div class = "column"> Column 1</div>
+        </td>
+        <td>
+          <div class = "column"> Column 2</div>
+        </td>
+        <td>
+          <div class = "column"> Column 3</div>
+        </td>
+        <td>
+          <div></div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <img src = "/img/leeds.png" alt = "Leeds" class = "center">
+        </td>
+        <td class = "border-cell">
+          <button class = "table-button" onclick = "doSomething()">
+            <p id = "button1"> Hello</p>
+          </button>
+        <td class = "border-cell">
+          <button class = "table-button" onclick = "doSomething2()">
+            <p id = "button2"> Hello</p>
+          </button>
+        </td>
+        <td class = "border-cell">
+          <button class = "table-button" onclick = "doSomething3()">
+            <p id = "button3"> Hello</p>
+          </button>
+        </td>
+        <td>
+          <div></div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <div class = "row"> Row 2 </div>
+        </td>
+        <td class = "border-cell">
+          <button class = "table-button" onclick = "doSomething4()">
+            <p id = "button4"> Hello</p>
+          </button>
+        </td>
+        <td class = "border-cell">
+          <button class = "table-button" onclick = "doSomething5()">
+            <p id = "button5"> Hello</p>
+          </button>
+        </td>
+        <td class = "border-cell">
+          <button class = "table-button" onclick = "doSomething6()">
+            <p id = "button6"> Hello</p>
+          </button>
+        </td>
+        <td>
+          <p id = "guesses_text"> Number of Guesses: </p>
+          <p id = "num_guesses"> 0 </p>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <div class = "row"> Row 3 </div>
+        </td>
+        <td class = "border-cell">
+          <button class = "table-button" onclick = "doSomething7()">
+            <p id = "button7"> Hello</p>
+          </button>
+        </td>
+        <td class = "border-cell">
+          <button class = "table-button" onclick = "doSomething8()">
+            <p id = "button8"> Hello</p>
+          </button>
+        </td>
+        <td class = "border-cell">
+          <button class = "table-button" onclick = "doSomething9()">
+            <p id = "button9"> Hello</p>
+          </button>
+        </td>
+        <td>
+          <div></div>
+        </td>
+
+      </tr>
+    </table>
+
+  </div>
+</body>
+
+<style>
+  .border-cell {
+    border: 1px solid #000;
+  }
+  .ribbon {
+    color: black;
+    padding: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .ribbon-text {
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  table {
+    width: 100%;
+    border-spacing : 0px;
+    padding: 0px;
+    border: white;
+    table-layout: fixed;
+    border-collapse: collapse;
+  }
+
+  .table-container {
+    display: flex;
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height : 100px;
+  }
+
+  .table-button{
+    height : 200px;
+    transition: all 0.2s;
+    display: inline;
+    width : 100%;
+    border: white;
+  }
+  button:hover{
+    background-color: #888888;
+  }
+  .column {
+    text-align: center;
+    background-color: white;
+    height : 100px;
+  }
+
+  .row {
+    text-align: center;
+    background-color: white;
+    height : 200px;
+  }
+
+  #num_guesses {
+    font-size: 40px;
+  }
+  td {
+    text-align: center;
+    vertical-align: center;
+  }
+  .how-to-button {
+    border: white;
+    background-color: white;
+    text-decoration: underline;
+  }
+  button {
+    cursor: pointer;
+  }
+  .popup-container {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .how-to-container {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .popup-content {
+    background-color: #fff;
+    padding: 20px;
+    width: 300px;
+    margin: 100px auto;
+    border-radius: 4px;
+  }
+
+  .close {
+    float: right;
+    cursor: pointer;
+  }
+  body {
+    font-family: Georgia;
+    font-size: 20px;
+  }
+
+  .select-btn{
+    height: 65px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 7px;
+  }
+  .options li:hover {
+    background: #888888;
+  }
+  .search input{
+    height: 53px;
+    width: 100%;
+  }
+
+  .popup-content .search{
+    position: relative;
+  }
+
+  .select-btn, .options li {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+  }
+  .popup-content .options{
+    overflow-y: auto;
+    margin-top: 10px;
+    max-height: 250px;
+  }
+  .popup-container.active.popup-content{
+      display: block;
+  }
+
+
+</style>
+<script src="script.js"></script>
+</html>
