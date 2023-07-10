@@ -1,7 +1,7 @@
 <!doctype html>
 <head>
   <meta charset = "utf-8">
-  <title> Soccer Grid Gam</title>
+  <title> Soccer Grid Game</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -142,6 +142,9 @@
 </body>
 
 <style>
+  * {
+    box-sizing: border-box;
+  }
   .border-cell {
     border: 1px solid #000;
   }
@@ -170,6 +173,8 @@
 
   .table-container {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .center {
@@ -182,7 +187,7 @@
   .table-button{
     height : 200px;
     transition: all 0.2s;
-    display: inline;
+    display: inline-block;
     width : 100%;
     border: white;
   }
@@ -252,6 +257,8 @@
   body {
     font-family: Georgia;
     font-size: 20px;
+    margin: 0;
+    padding: 0;
   }
 
   .select-btn{
@@ -286,6 +293,12 @@
   }
   .popup-container.active.popup-content{
       display: block;
+  }
+  @media (max-width: 768px) {
+    .select-btn, .options li {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 
 
