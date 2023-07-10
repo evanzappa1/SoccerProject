@@ -1,33 +1,6 @@
 var count = 0;
 var grid9 = false;
 
-function getData(callback) {
-  const mysql = require('mysql2');
-  const pool = mysql.createPool({
-    host: '127.0.0.1',
-    user: 'root',
-    password: 'Xftkchb7!!',
-    database: 'players',
-  });
-
-  pool.query('SELECT * FROM players.players;', [], (err, result, fields) => {
-    if (err) {
-      callback(err, null);
-    } else {
-      callback(null, result);
-    }
-    pool.end();
-    return result;
-  });
-}
-
-getData((err, result) => {
-  if (err) {
-    console.error(err);
-  } else {
-    global.playerNames = result.map(player => player.PlayerName);}
-  });
-console.log(playerNames)
 function doSomething() {
   document.getElementById("button1").innerHTML = "Goodbye";
   updateGuesses();
@@ -89,33 +62,43 @@ function closePopup() {
 }
 
 function openSearch() {
-  document.getElementById("search-popup").style.display = "block";
-  const wrapper = document.querySelector(".popup-container")
-  selectBtn = wrapper.querySelector(".select-btn")
-  options = wrapper.querySelector(".options")
-  choices.forEach(choice => {
-    let li = '<li>'+choice+'</li>';
-    options.insertAdjacentHTML("beforeend", li);
-  })
+  fetch('temp.json')
+    .then(response => response.json())
+    .then(jsonData => {
+      const playerNames = jsonData.map(player => player.PlayerName);
+      document.getElementById("search-popup").style.display = "block";
+      const wrapper = document.querySelector(".popup-container")
+      selectBtn = wrapper.querySelector(".select-btn")
+      options = wrapper.querySelector(".options")
+      playerNames.forEach(name => {
+        let li = '<li>'+name+'</li>';
+        options.insertAdjacentHTML("beforeend", li);
+      })
+    })
+    .catch(err => {
+      console.error(err);
+    });
+
 }
 function closeSearch() {
   document.getElementById("search-popup").style.display = "none";
 }
-/*
 function autofill() {
-  const wrapper = document.querySelector(".popup-container")
-  searchInp = wrapper.querySelector("input")
-  searchInp.addEventListener("keyup", () => {
-    let arr = [];
-    let searchedVal = searchInp.value.toLowerCase();
-    arr = choices.filter(data => {
-      return data.toLowerCase().startsWith(searchedVal);
-    }).map(data => '<li>' + data + '</li>').join("")
-    options.innerHTML =  arr ? arr: '<p>Player not found!</p>';
+  fetch('temp.json')
+    .then(response => response.json())
+    .then(jsonData => {
+      const playerNames = jsonData.map(player => player.PlayerName);
+      const wrapper = document.querySelector(".popup-container")
+      searchInp = wrapper.querySelector("input")
+      searchInp.addEventListener("keyup", () => {
+        let arr = [];
+        let searchedVal = searchInp.value.toLowerCase();
+        arr = playerNames.filter(data => {
+          return data.toLowerCase().startsWith(searchedVal);
+        }).map(data => '<li>' + data + '</li>').join("")
+        options.innerHTML = arr ? arr : '<p>Player not found!</p>';
+      })
   })
 }
 
 autofill();
-
-
- */
