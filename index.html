@@ -51,13 +51,19 @@
           <div></div>
         </td>
         <td>
-          <img src = "ac_milan.png" alt = "AC Milan" class = "center">
+          <div class = "image-container">
+            <img src = "ac_milan.png" alt = "AC Milan" class = "center">
+          </div>
         </td>
         <td>
-          <img src = "italy.png" alt = "Italy" class = "center">
+          <div class = "image-container">
+            <img src = "italy.png" alt = "Italy" class = "center">
+          </div>
         </td>
         <td>
-          <img src = "brazil.png" alt = "Brazil" class = "center">
+          <div class = "image-container">
+            <img src = "brazil.png" alt = "Brazil" class = "center">
+          </div>
         </td>
         <td>
           <div></div>
@@ -66,7 +72,9 @@
 
       <tr>
         <td>
-          <img src = "leeds.png" alt = "Leeds" class = "center">
+          <div class = "image-container">
+            <img src = "leeds.png" alt = "Leeds" class = "center">
+          </div>
         </td>
         <td class = "border-cell">
           <button class = "table-button" onclick = "doSomething()">
@@ -89,7 +97,9 @@
 
       <tr>
         <td>
-          <img src = "usa.png" alt = "USA" class = "center">
+          <div class = "image-container">
+            <img src = "usa.png" alt = "USA" class = "center">
+          </div>
         </td>
         <td class = "border-cell">
           <button class = "table-button" onclick = "doSomething4()">
@@ -114,7 +124,9 @@
 
       <tr>
         <td>
-          <img src = "psg.png" alt = "PSG" class = "center">
+          <div class = "image-container">
+            <img src = "psg.png" alt = "PSG" class = "center">
+          </div>
         </td>
         <td class = "border-cell">
           <button class = "table-button" onclick = "doSomething7()">
@@ -194,17 +206,6 @@
   button:hover{
     background-color: #888888;
   }
-  .column {
-    text-align: center;
-    background-color: white;
-    height : 100px;
-  }
-
-  .row {
-    text-align: center;
-    background-color: white;
-    height : 200px;
-  }
 
   #num_guesses {
     font-size: 40px;
@@ -212,6 +213,16 @@
   td {
     text-align: center;
     vertical-align: center;
+  }
+  .image-container {
+    max-height: 100%;
+    max-width: 100%;
+  }
+  .image-container img {
+    max-height: 70%;
+    max-width: 70%;
+    height: auto;
+    width: auto;
   }
   .how-to-button {
     border: white;
