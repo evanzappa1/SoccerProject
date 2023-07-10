@@ -43,9 +43,76 @@ function closePopup() {
 function searchName(playerName, id) {
   updateGuesses()
   closeSearch()
-  if (playerName == 'Zach Abbott') {
-    correctGuess(playerName,id)
-  }
+  fetch('temp.json')
+    .then(response => response.json())
+    .then(jsonData => {
+      const playerData = jsonData.find(player => player.PlayerName === playerName);
+      const teamList = playerData.TeamList;
+      const nationalities = playerData.Nationalities;
+      if (id == document.getElementById("cell1")) {
+        team1 = document.getElementById("row-1").querySelector('img').getAttribute('alt')
+        team2 = document.getElementById("column-1").querySelector('img').getAttribute('alt')
+        if (teamList.includes(team1) || teamList.includes(team2)) {
+          correctGuess(playerName, id)
+        }
+      }
+      if (id == document.getElementById("cell2")) {
+        team1 = document.getElementById("row-1").querySelector('img').getAttribute('alt')
+        team2 = document.getElementById("column-2").querySelector('img').getAttribute('alt')
+        if (teamList.includes(team1) || teamList.includes(team2)) {
+          correctGuess(playerName, id)
+        }
+      }
+      if (id == document.getElementById("cell3")) {
+        team1 = document.getElementById("row-1").querySelector('img').getAttribute('alt')
+        team2 = document.getElementById("column-3").querySelector('img').getAttribute('alt')
+        if (teamList.includes(team1) || teamList.includes(team2)) {
+          correctGuess(playerName, id)
+        }
+      }
+      if (id == document.getElementById("cell4")) {
+        team1 = document.getElementById("row-2").querySelector('img').getAttribute('alt')
+        team2 = document.getElementById("column-1").querySelector('img').getAttribute('alt')
+        if (teamList.includes(team1) || teamList.includes(team2)) {
+          correctGuess(playerName, id)
+        }
+      }
+      if (id == document.getElementById("cell5")) {
+        team1 = document.getElementById("row-2").querySelector('img').getAttribute('alt')
+        team2 = document.getElementById("column-2").querySelector('img').getAttribute('alt')
+        if (teamList.includes(team1) || teamList.includes(team2)) {
+          correctGuess(playerName, id)
+        }
+      }
+      if (id == document.getElementById("cell6")) {
+        team1 = document.getElementById("row-2").querySelector('img').getAttribute('alt')
+        team2 = document.getElementById("column-3").querySelector('img').getAttribute('alt')
+        if (teamList.includes(team1) || teamList.includes(team2)) {
+          correctGuess(playerName, id)
+        }
+      }
+      if (id == document.getElementById("cell7")) {
+        team1 = document.getElementById("row-3").querySelector('img').getAttribute('alt')
+        team2 = document.getElementById("column-1").querySelector('img').getAttribute('alt')
+        if (teamList.includes(team1) || teamList.includes(team2)) {
+          correctGuess(playerName, id)
+        }
+      }
+      if (id == document.getElementById("cell8")) {
+        team1 = document.getElementById("row-3").querySelector('img').getAttribute('alt')
+        team2 = document.getElementById("column-2").querySelector('img').getAttribute('alt')
+        if (teamList.includes(team1) || teamList.includes(team2)) {
+          correctGuess(playerName, id)
+        }
+      }
+      if (id == document.getElementById("cell9")) {
+        team1 = document.getElementById("row-3").querySelector('img').getAttribute('alt')
+        team2 = document.getElementById("column-3").querySelector('img').getAttribute('alt')
+        if (teamList.includes(team1) || teamList.includes(team2)) {
+          correctGuess(playerName, id)
+        }
+      }
+    })
 }
 
 function correctGuess(playerName,id) {
@@ -79,7 +146,6 @@ function handleAutofill(player_id) {
       options.innerHTML = arr ? arr : '<p>Player not found!</p>';
     })
 }
-
 function openSearch(id) {
   document.getElementById("search-popup").style.display = "block";
   const wrapper = document.querySelector(".popup-container");
@@ -87,5 +153,5 @@ function openSearch(id) {
   options = wrapper.querySelector(".options");
   searchInp.value = ""; // Reset the search input value
   options.innerHTML = ""; // Clear the options list
-  searchInp.addEventListener("keyup", handleAutofill(id)); // Add the keyup event listener
+  searchInp.addEventListener("keyup", () => handleAutofill(id)); // Add the keyup event listener
 }

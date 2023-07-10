@@ -34,6 +34,8 @@
       flex-wrap: wrap;
       justify-content: center;
       height: calc(100% - 50px); /* Subtract the height of the ribbon */
+      padding-bottom: 10%;
+      padding-top: 10%
     }
 
     table {
@@ -67,6 +69,7 @@
       max-width: 70%;
       height: auto;
       width: auto;
+      padding: 10px;
     }
 
     .table-button {
@@ -193,26 +196,23 @@
 
   <div class="table-container">
     <table>
-      <tr>
-        <th colspan="5" style="font-size: 28px;"></th>
-      </tr>
 
       <tr>
         <td>
           <div></div>
         </td>
         <td>
-          <div class = "image-container">
+          <div class = "image-container" id = "column-1">
             <img src = "ac_milan.png" alt = "AC Milan" class = "center">
           </div>
         </td>
         <td>
-          <div class = "image-container">
+          <div class = "image-container" id = "column-2">
             <img src = "italy.png" alt = "Italy" class = "center">
           </div>
         </td>
         <td>
-          <div class = "image-container">
+          <div class = "image-container" id = "column-3">
             <img src = "brazil.png" alt = "Brazil" class = "center">
           </div>
         </td>
@@ -223,8 +223,8 @@
 
       <tr>
         <td>
-          <div class = "image-container">
-            <img src = "leeds.png" alt = "Leeds" class = "center">
+          <div class = "image-container" id = "row-1">
+            <img src = "leeds.png" alt = "Leeds United" class = "center">
           </div>
         </td>
         <td class = "border-cell" id = "cell1">
@@ -248,7 +248,7 @@
 
       <tr>
         <td>
-          <div class = "image-container">
+          <div class = "image-container" id = "row-2">
             <img src = "usa.png" alt = "USA" class = "center">
           </div>
         </td>
@@ -275,7 +275,7 @@
 
       <tr>
         <td>
-          <div class = "image-container">
+          <div class = "image-container" id = "row 3">
             <img src = "psg.png" alt = "PSG" class = "center">
           </div>
         </td>
