@@ -50,7 +50,7 @@
     td {
       text-align: center;
       vertical-align: middle;
-      padding: 8px;
+      padding: 1px;
       width: 20%; /* Set the width of each cell to 20% */
       height: 20%; /* Set the height of each cell to 20% */
     }
@@ -80,6 +80,7 @@
     }
 
     button:hover {
+      cursor: pointer;
       background-color: #888888;
     }
 
@@ -153,13 +154,6 @@
       display: block;
     }
 
-    @media (max-width: 768px) {
-      .select-btn,
-      .options li {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
   </style>
 </head>
 <body>
@@ -233,18 +227,18 @@
             <img src = "leeds.png" alt = "Leeds" class = "center">
           </div>
         </td>
-        <td class = "border-cell">
+        <td class = "border-cell" id = "cell1">
           <button class = "table-button" onclick = "doSomething()">
-            <p id = "button1"> Hello</p>
+            <p id = "button1"> </p>
           </button>
-        <td class = "border-cell">
+        <td class = "border-cell" id = "cell2">
           <button class = "table-button" onclick = "doSomething2()">
-            <p id = "button2"> Hello</p>
+            <p id = "button2"> </p>
           </button>
         </td>
-        <td class = "border-cell">
+        <td class = "border-cell" id = "cell3">
           <button class = "table-button" onclick = "doSomething3()">
-            <p id = "button3"> Hello</p>
+            <p id = "button3"> </p>
           </button>
         </td>
         <td>
@@ -258,19 +252,19 @@
             <img src = "usa.png" alt = "USA" class = "center">
           </div>
         </td>
-        <td class = "border-cell">
+        <td class = "border-cell" id = "cell4">
           <button class = "table-button" onclick = "doSomething4()">
-            <p id = "button4"> Hello</p>
+            <p id = "button4"> </p>
           </button>
         </td>
-        <td class = "border-cell">
+        <td class = "border-cell" id = "cell5">
           <button class = "table-button" onclick = "doSomething5()">
-            <p id = "button5"> Hello</p>
+            <p id = "button5"> </p>
           </button>
         </td>
-        <td class = "border-cell">
+        <td class = "border-cell" id = "cell6">
           <button class = "table-button" onclick = "doSomething6()">
-            <p id = "button6"> Hello</p>
+            <p id = "button6"> </p>
           </button>
         </td>
         <td>
@@ -285,19 +279,19 @@
             <img src = "psg.png" alt = "PSG" class = "center">
           </div>
         </td>
-        <td class = "border-cell">
+        <td class = "border-cell" id = "cell7">
           <button class = "table-button" onclick = "doSomething7()">
-            <p id = "button7"> Hello</p>
+            <p id = "button7"> </p>
           </button>
         </td>
-        <td class = "border-cell">
+        <td class = "border-cell" id = "cell8">
           <button class = "table-button" onclick = "doSomething8()">
-            <p id = "button8"> Hello</p>
+            <p id = "button8"> </p>
           </button>
         </td>
-        <td class = "border-cell">
+        <td class = "border-cell" id = "cell9">
           <button class = "table-button" onclick = "doSomething9()">
-            <p id = "button9"> Hello</p>
+            <p id = "button9"> </p>
           </button>
         </td>
         <td>

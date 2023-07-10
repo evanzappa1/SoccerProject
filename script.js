@@ -2,51 +2,31 @@ var count = 0;
 var grid9 = false;
 
 function doSomething() {
-  document.getElementById("button1").innerHTML = "Goodbye";
-  updateGuesses();
-  openSearch();
+  openSearch("cell1");
 }
 function doSomething2() {
-  document.getElementById("button2").innerHTML = "Goodbye";
-  updateGuesses();
-  openSearch();
+  openSearch("cell2");
 }
 function doSomething3() {
-  document.getElementById("button3").innerHTML = "Goodbye";
-  updateGuesses();
-  openSearch();
+  openSearch("cell3");
 }
 function doSomething4() {
-  document.getElementById("button4").innerHTML = "Goodbye";
-  updateGuesses();
-  openSearch();
+  openSearch("cell4");
 }
 function doSomething5() {
-  document.getElementById("button5").innerHTML = "Goodbye";
-  updateGuesses();
-  openSearch();
+  openSearch("cell5");
 }
 function doSomething6() {
-  document.getElementById("button6").innerHTML = "Goodbye";
-  updateGuesses();
-  openSearch();
+  openSearch("cell6");
 }
 function doSomething7() {
-  document.getElementById("button7").innerHTML = "Goodbye";
-  updateGuesses();
-  openSearch();
+  openSearch("cell7");
 }
 function doSomething8() {
-  document.getElementById("button8").innerHTML = "Goodbye";
-  updateGuesses();
-  openSearch();
+  openSearch("cell8");
 }
 function doSomething9() {
-  document.getElementById("button9").innerHTML = "This is 9";
-  var button = document.getElementById("button9").parentNode;
-  button.disabled = true;
-  updateGuesses();
-  openSearch();
+  openSearch("cell9");
 
 }
 function updateGuesses() {
@@ -60,45 +40,52 @@ function openPopup() {
 function closePopup() {
   document.getElementById("popup").style.display = "none";
 }
-
-function openSearch() {
-  fetch('temp.json')
-    .then(response => response.json())
-    .then(jsonData => {
-      const playerNames = jsonData.map(player => player.PlayerName);
-      document.getElementById("search-popup").style.display = "block";
-      const wrapper = document.querySelector(".popup-container")
-      selectBtn = wrapper.querySelector(".select-btn")
-      options = wrapper.querySelector(".options")
-      playerNames.forEach(name => {
-        let li = '<li>'+name+'</li>';
-        options.insertAdjacentHTML("beforeend", li);
-      })
-    })
-    .catch(err => {
-      console.error(err);
-    });
-
+function searchName(playerName, id) {
+  updateGuesses()
+  closeSearch()
+  if (playerName == 'Zach Abbott') {
+    correctGuess(playerName,id)
+  }
 }
+
+function correctGuess(playerName,id) {
+  id.innerHTML = playerName
+  id.style.backgroundColor = "green"
+}
+
+
 function closeSearch() {
   document.getElementById("search-popup").style.display = "none";
+  const wrapper = document.querySelector(".popup-container");
+  searchInp = wrapper.querySelector("input");
+  options = wrapper.querySelector(".options");
+  searchInp.value = ""; // Reset the search input value
+  options.innerHTML = ""; // Clear the options list
+  searchInp.removeEventListener("keyup", handleAutofill); // Remove the keyup event listener
 }
-function autofill() {
+
+function handleAutofill(player_id) {
   fetch('temp.json')
     .then(response => response.json())
     .then(jsonData => {
       const playerNames = jsonData.map(player => player.PlayerName);
-      const wrapper = document.querySelector(".popup-container")
-      searchInp = wrapper.querySelector("input")
-      searchInp.addEventListener("keyup", () => {
-        let arr = [];
-        let searchedVal = searchInp.value.toLowerCase();
-        arr = playerNames.filter(data => {
-          return data.toLowerCase().startsWith(searchedVal);
-        }).map(data => '<li>' + data + '</li>').join("")
-        options.innerHTML = arr ? arr : '<p>Player not found!</p>';
-      })
-  })
+      const wrapper = document.querySelector(".popup-container");
+      options = wrapper.querySelector(".options");
+      let arr = [];
+      let searchedVal = searchInp.value.toLowerCase();
+      arr = playerNames.filter(data => {
+        return data.toLowerCase().startsWith(searchedVal);
+      }).map(data => '<li onclick="searchName(this.innerHTML, ' + player_id + ')">' + data + '</li>').join("");
+      options.innerHTML = arr ? arr : '<p>Player not found!</p>';
+    })
 }
 
-autofill();
+function openSearch(id) {
+  document.getElementById("search-popup").style.display = "block";
+  const wrapper = document.querySelector(".popup-container");
+  searchInp = wrapper.querySelector("input");
+  options = wrapper.querySelector(".options");
+  searchInp.value = ""; // Reset the search input value
+  options.innerHTML = ""; // Clear the options list
+  searchInp.addEventListener("keyup", handleAutofill(id)); // Add the keyup event listener
+}
