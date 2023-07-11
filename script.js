@@ -43,12 +43,14 @@ function closePopup() {
 function searchName(playerName, id) {
   updateGuesses()
   closeSearch()
-  fetch('temp.json')
+  fetch('new_df.json')
     .then(response => response.json())
     .then(jsonData => {
       const playerData = jsonData.find(player => player.PlayerName === playerName);
       const teamList = playerData.TeamList;
-      const nationalities = playerData.Nationalities;
+      const nationalities = playerData.Nationality;
+      const yearsActive = playerData.YearsActive;
+      const position = playerData.Positions;
       if (id == document.getElementById("cell1")) {
         team1 = document.getElementById("row-1").querySelector('img').getAttribute('alt')
         team2 = document.getElementById("column-1").querySelector('img').getAttribute('alt')
@@ -132,7 +134,7 @@ function closeSearch() {
 }
 
 function handleAutofill(player_id) {
-  fetch('temp.json')
+  fetch('new_df.json')
     .then(response => response.json())
     .then(jsonData => {
       const playerNames = jsonData.map(player => player.PlayerName);
@@ -155,3 +157,4 @@ function openSearch(id) {
   options.innerHTML = ""; // Clear the options list
   searchInp.addEventListener("keyup", () => handleAutofill(id)); // Add the keyup event listener
 }
+
