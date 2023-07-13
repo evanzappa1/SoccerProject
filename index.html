@@ -164,13 +164,13 @@
     <h1 class="ribbon-text">
       Soccer Grid Game
     </h1>
-    <button class="how-to-button" onclick="openPopup()">
+    <button id="how-to-button">
       How to play
     </button>
   </div>
   <div id="popup" class="how-to-container">
     <div class="popup-content">
-      <span class="close" onclick="closePopup()">&times;</span>
+      <span id = "closeRulesButton" class="close">&times;</span>
       <h2>How to play</h2>
       <p>These are the rules.</p>
     </div>
@@ -180,10 +180,9 @@
       <i class="uil uil-angle-down"></i>
     </div>
     <div class="popup-content">
-      <span class="close" onclick="closeSearch()">&times;</span>
-      <h2>
-        Search
-      </h2>
+      <span id = "closeSearchButton" class="close">&times;</span>
+      <h2>Search</h2>
+
       <div class="search">
         <i class="uil uil-search">
           <input type="text" placeholder="Search">
@@ -208,12 +207,12 @@
         </td>
         <td>
           <div class = "image-container" id = "column-2">
-            <img src = "italy.png" alt = "Italy" class = "center">
+            <img src = "chelsea.png" alt = "Chelsea FC" class = "center">
           </div>
         </td>
         <td>
           <div class = "image-container" id = "column-3">
-            <img src = "brazil.png" alt = "Brazil" class = "center">
+            <img src = "westHam.png" alt = "West Ham United" class = "center">
           </div>
         </td>
         <td>
@@ -228,17 +227,18 @@
           </div>
         </td>
         <td class = "border-cell" id = "cell1">
-          <button class = "table-button" onclick = "doSomething()">
-            <p id = "button1"> </p>
+          <button class = "table-button" id = "button1">
+            <p> </p>
           </button>
+        </td>
         <td class = "border-cell" id = "cell2">
-          <button class = "table-button" onclick = "doSomething2()">
-            <p id = "button2"> </p>
+          <button class = "table-button" id = "button2">
+            <p> </p>
           </button>
         </td>
         <td class = "border-cell" id = "cell3">
-          <button class = "table-button" onclick = "doSomething3()">
-            <p id = "button3"> </p>
+          <button class = "table-button" id = "button3">
+            <p> </p>
           </button>
         </td>
         <td>
@@ -249,22 +249,22 @@
       <tr>
         <td>
           <div class = "image-container" id = "row-2">
-            <img src = "usa.png" alt = "United States" class = "center">
+            <img src = "manchesterUnited.png" alt = "Manchester United" class = "center">
           </div>
         </td>
         <td class = "border-cell" id = "cell4">
-          <button class = "table-button" onclick = "doSomething4()">
-            <p id = "button4"> </p>
+          <button class = "table-button" id = "button4">
+            <p> </p>
           </button>
         </td>
         <td class = "border-cell" id = "cell5">
-          <button class = "table-button" onclick = "doSomething5()">
-            <p id = "button5"> </p>
+          <button class = "table-button" id = "button5">
+            <p> </p>
           </button>
         </td>
         <td class = "border-cell" id = "cell6">
-          <button class = "table-button" onclick = "doSomething6()">
-            <p id = "button6"> </p>
+          <button class = "table-button" id = "button6">
+            <p> </p>
           </button>
         </td>
         <td>
@@ -275,32 +275,32 @@
 
       <tr>
         <td>
-          <div class = "image-container" id = "row 3">
-            <img src = "psg.png" alt = "Paris Saint-Germain" class = "center">
+          <div class = "image-container" id = "row-3">
+            <img src = "liverpool.png" alt = "Liverpool FC" class = "center">
           </div>
         </td>
         <td class = "border-cell" id = "cell7">
-          <button class = "table-button" onclick = "doSomething7()">
-            <p id = "button7"> </p>
+          <button class = "table-button" id = "button7">
+            <p> </p>
           </button>
         </td>
         <td class = "border-cell" id = "cell8">
-          <button class = "table-button" onclick = "doSomething8()">
-            <p id = "button8"> </p>
+          <button class = "table-button" id = "button8">
+            <p> </p>
           </button>
         </td>
         <td class = "border-cell" id = "cell9">
-          <button class = "table-button" onclick = "doSomething9()">
-            <p id = "button9"> </p>
+          <button class = "table-button" id = "button9">
+            <p> </p>
           </button>
         </td>
         <td>
           <div></div>
         </td>
-
       </tr>
     </table>
   </div>
 </body>
-<script src="script.js"></script>
+<script type = "text/javascript" src="bundle.js">
+</script>
 </html>

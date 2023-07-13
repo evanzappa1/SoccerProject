@@ -1,34 +1,56 @@
 var count = 0;
 var grid9 = false;
 
-function doSomething() {
-  openSearch("cell1");
-}
-function doSomething2() {
-  openSearch("cell2");
-}
-function doSomething3() {
-  openSearch("cell3");
-}
-function doSomething4() {
-  openSearch("cell4");
-}
-function doSomething5() {
-  openSearch("cell5");
-}
-function doSomething6() {
-  openSearch("cell6");
-}
-function doSomething7() {
-  openSearch("cell7");
-}
-function doSomething8() {
-  openSearch("cell8");
-}
-function doSomething9() {
-  openSearch("cell9");
 
-}
+const button1 = document.getElementById('button1');
+button1.addEventListener('click', () => {
+  openSearch("cell1");
+});
+const button2 = document.getElementById('button2');
+button2.addEventListener('click', () => {
+  openSearch("cell2");
+});
+const button3 = document.getElementById('button3');
+button3.addEventListener('click', () => {
+  openSearch("cell3");
+});
+const button4 = document.getElementById('button4');
+button4.addEventListener('click', () => {
+  openSearch("cell4");
+});
+const button5 = document.getElementById('button5');
+button5.addEventListener('click', () => {
+  openSearch("cell5");
+});
+const button6 = document.getElementById('button6');
+button6.addEventListener('click', () => {
+  openSearch("cell6");
+});
+const button7 = document.getElementById('button7');
+button7.addEventListener('click', () => {
+  openSearch("cell7");
+});
+const button8 = document.getElementById('button8');
+button8.addEventListener('click', () => {
+  openSearch("cell8");
+});
+const button9 = document.getElementById('button9');
+button9.addEventListener('click', () => {
+  openSearch("cell9");
+});
+const howToButton = document.getElementById('how-to-button');
+howToButton.addEventListener('click', () => {
+  openPopup();
+});
+const closeSearchButton = document.getElementById('closeSearchButton');
+closeSearchButton.addEventListener('click', () => {
+  closeSearch();
+});
+const closeRulesButton = document.getElementById('closeRulesButton');
+closeRulesButton.addEventListener('click', () => {
+  closePopup();
+});
+
 function updateGuesses() {
   count += 1;
   document.getElementById("num_guesses").innerHTML = count;
@@ -41,80 +63,98 @@ function closePopup() {
   document.getElementById("popup").style.display = "none";
 }
 function searchName(playerName, id) {
+  var params = {
+    TableName: "playerData",
+    ProjectionExpression: "PlayerName, TeamList",
+    KeyConditionExpression: "PlayerName = :name",
+    ExpressionAttributeValues: {
+      ":name": playerName
+    }
+  };
+  var AWS = require('aws-sdk');
+  let awsConfig = {
+    "region" : "us-east-1",
+    "endpoint": "http://dynamodb.us-east-1.amazonaws.com",
+    "accessKeyId" : "AKIAUSFHKJDTCHVCHAPW", "secretAccessKey" : "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"
+  };
+  AWS.config.update(awsConfig)
+  let docClient = new AWS.DynamoDB.DocumentClient();
+  docClient.query(params, function (err, data) {
+    if (err) {
+      console.error("Error fetching players:", err);
+    } else {
+      playerNames =  data.Items.map(item => item.PlayerName);
+      playerNames = playerNames.join(',')
+      teamList =  data.Items.map(item => item.TeamList);
+      teamList = teamList.join(',')
+      console.log(id)
+        if (id == "cell1") {
+          team1 = document.getElementById("row-1").querySelector('img').getAttribute('alt')
+          team2 = document.getElementById("column-1").querySelector('img').getAttribute('alt')
+          if (teamList.includes(team1) || teamList.includes(team2)) {
+            correctGuess(playerName, document.getElementById("cell1"))
+          }
+        }
+        if (id == "cell2") {
+          team1 = document.getElementById("row-1").querySelector('img').getAttribute('alt')
+          team2 = document.getElementById("column-2").querySelector('img').getAttribute('alt')
+          if (teamList.includes(team1) || teamList.includes(team2)) {
+            correctGuess(playerName, document.getElementById("cell2"))
+          }
+        }
+        if (id == "cell3") {
+          team1 = document.getElementById("row-1").querySelector('img').getAttribute('alt')
+          team2 = document.getElementById("column-3").querySelector('img').getAttribute('alt')
+          if (teamList.includes(team1) || teamList.includes(team2)) {
+            correctGuess(playerName, document.getElementById("cell3"))
+          }
+        }
+        if (id == "cell4") {
+          team1 = document.getElementById("row-2").querySelector('img').getAttribute('alt')
+          team2 = document.getElementById("column-1").querySelector('img').getAttribute('alt')
+          if (teamList.includes(team1) || teamList.includes(team2)) {
+            correctGuess(playerName, document.getElementById("cell4"))
+          }
+        }
+        if (id == "cell5") {
+          team1 = document.getElementById("row-2").querySelector('img').getAttribute('alt')
+          team2 = document.getElementById("column-2").querySelector('img').getAttribute('alt')
+          if (teamList.includes(team1) || teamList.includes(team2)) {
+            correctGuess(playerName, document.getElementById("cell5"))
+          }
+        }
+        if (id == "cell6") {
+          team1 = document.getElementById("row-2").querySelector('img').getAttribute('alt')
+          team2 = document.getElementById("column-3").querySelector('img').getAttribute('alt')
+          if (teamList.includes(team1) || teamList.includes(team2)) {
+            correctGuess(playerName, document.getElementById("cell6"))
+          }
+        }
+        if (id == "cell7") {
+          team1 = document.getElementById("row-3").querySelector('img').getAttribute('alt')
+          team2 = document.getElementById("column-1").querySelector('img').getAttribute('alt')
+          if (teamList.includes(team1) || teamList.includes(team2)) {
+            correctGuess(playerName, document.getElementById("cell7"))
+          }
+        }
+        if (id == "cell8") {
+          team1 = document.getElementById("row-3").querySelector('img').getAttribute('alt')
+          team2 = document.getElementById("column-2").querySelector('img').getAttribute('alt')
+          if (teamList.includes(team1) || teamList.includes(team2)) {
+            correctGuess(playerName, document.getElementById("cell8"))
+          }
+        }
+        if (id == "cell9") {
+          team1 = document.getElementById("row-3").querySelector('img').getAttribute('alt')
+          team2 = document.getElementById("column-3").querySelector('img').getAttribute('alt')
+          if (teamList.includes(team1) || teamList.includes(team2)) {
+            correctGuess(playerName, document.getElementById("cell9"))
+          }
+        }
+    }
+    })
   updateGuesses()
   closeSearch()
-  fetch('new_df.json')
-    .then(response => response.json())
-    .then(jsonData => {
-      const playerData = jsonData.find(player => player.PlayerName === playerName);
-      const teamList = playerData.TeamList;
-      const nationalities = playerData.Nationality;
-      const yearsActive = playerData.YearsActive;
-      const position = playerData.Positions;
-      if (id == document.getElementById("cell1")) {
-        team1 = document.getElementById("row-1").querySelector('img').getAttribute('alt')
-        team2 = document.getElementById("column-1").querySelector('img').getAttribute('alt')
-        if (teamList.includes(team1) || teamList.includes(team2)) {
-          correctGuess(playerName, id)
-        }
-      }
-      if (id == document.getElementById("cell2")) {
-        team1 = document.getElementById("row-1").querySelector('img').getAttribute('alt')
-        team2 = document.getElementById("column-2").querySelector('img').getAttribute('alt')
-        if (teamList.includes(team1) || teamList.includes(team2)) {
-          correctGuess(playerName, id)
-        }
-      }
-      if (id == document.getElementById("cell3")) {
-        team1 = document.getElementById("row-1").querySelector('img').getAttribute('alt')
-        team2 = document.getElementById("column-3").querySelector('img').getAttribute('alt')
-        if (teamList.includes(team1) || teamList.includes(team2)) {
-          correctGuess(playerName, id)
-        }
-      }
-      if (id == document.getElementById("cell4")) {
-        team1 = document.getElementById("row-2").querySelector('img').getAttribute('alt')
-        team2 = document.getElementById("column-1").querySelector('img').getAttribute('alt')
-        if (teamList.includes(team1) || teamList.includes(team2)) {
-          correctGuess(playerName, id)
-        }
-      }
-      if (id == document.getElementById("cell5")) {
-        team1 = document.getElementById("row-2").querySelector('img').getAttribute('alt')
-        team2 = document.getElementById("column-2").querySelector('img').getAttribute('alt')
-        if (teamList.includes(team1) || teamList.includes(team2)) {
-          correctGuess(playerName, id)
-        }
-      }
-      if (id == document.getElementById("cell6")) {
-        team1 = document.getElementById("row-2").querySelector('img').getAttribute('alt')
-        team2 = document.getElementById("column-3").querySelector('img').getAttribute('alt')
-        if (teamList.includes(team1) || teamList.includes(team2)) {
-          correctGuess(playerName, id)
-        }
-      }
-      if (id == document.getElementById("cell7")) {
-        team1 = document.getElementById("row-3").querySelector('img').getAttribute('alt')
-        team2 = document.getElementById("column-1").querySelector('img').getAttribute('alt')
-        if (teamList.includes(team1) || teamList.includes(team2)) {
-          correctGuess(playerName, id)
-        }
-      }
-      if (id == document.getElementById("cell8")) {
-        team1 = document.getElementById("row-3").querySelector('img').getAttribute('alt')
-        team2 = document.getElementById("column-2").querySelector('img').getAttribute('alt')
-        if (teamList.includes(team1) || teamList.includes(team2)) {
-          correctGuess(playerName, id)
-        }
-      }
-      if (id == document.getElementById("cell9")) {
-        team1 = document.getElementById("row-3").querySelector('img').getAttribute('alt')
-        team2 = document.getElementById("column-3").querySelector('img').getAttribute('alt')
-        if (teamList.includes(team1) || teamList.includes(team2)) {
-          correctGuess(playerName, id)
-        }
-      }
-    })
 }
 
 function correctGuess(playerName,id) {
@@ -123,7 +163,7 @@ function correctGuess(playerName,id) {
 }
 
 
-function closeSearch() {
+let closeSearch = function () {
   document.getElementById("search-popup").style.display = "none";
   const wrapper = document.querySelector(".popup-container");
   searchInp = wrapper.querySelector("input");
@@ -134,18 +174,38 @@ function closeSearch() {
 }
 
 function handleAutofill(player_id) {
-  fetch('new_df.json')
-    .then(response => response.json())
-    .then(jsonData => {
-      const playerNames = jsonData.map(player => player.PlayerName);
-      const wrapper = document.querySelector(".popup-container");
-      options = wrapper.querySelector(".options");
+  const wrapper = document.querySelector(".popup-container");
+  const searchInp = wrapper.querySelector("input");
+  const options = wrapper.querySelector(".options");
+  var params = {
+    TableName: "playerData",
+    ProjectionExpression: "PlayerName"
+  };
+  var AWS = require('aws-sdk');
+  let awsConfig = {
+    "region" : "us-east-1",
+    "endpoint": "http://dynamodb.us-east-1.amazonaws.com",
+    "accessKeyId" : "AKIAUSFHKJDTCHVCHAPW", "secretAccessKey" : "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"
+  };
+  AWS.config.update(awsConfig)
+  let docClient = new AWS.DynamoDB.DocumentClient();
+  docClient.scan(params, function (err, data) {
+    if (err) {
+      console.error("Error fetching players:", err);
+    } else {
+      playerNames =  data.Items.map(item => item.PlayerName);
       let arr = [];
       let searchedVal = searchInp.value.toLowerCase();
-      arr = playerNames.filter(data => {
-        return data.toLowerCase().startsWith(searchedVal);
-      }).map(data => '<li onclick="searchName(this.innerHTML, ' + player_id + ')">' + data + '</li>').join("");
+      arr = playerNames
+        .filter(data => data.toLowerCase().startsWith(searchedVal))
+        .map(data => `<li>${data}</li>`)
+        .join("");
       options.innerHTML = arr ? arr : '<p>Player not found!</p>';
+      const liItems = options.querySelectorAll("li");
+      liItems.forEach((li) => {
+        li.addEventListener("click", () => searchName(li.innerHTML, player_id));
+      });
+    }
     })
 }
 function openSearch(id) {
@@ -157,4 +217,3 @@ function openSearch(id) {
   options.innerHTML = ""; // Clear the options list
   searchInp.addEventListener("keyup", () => handleAutofill(id)); // Add the keyup event listener
 }
-
