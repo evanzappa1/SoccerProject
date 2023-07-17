@@ -28,6 +28,9 @@
       font-weight: bold;
       font-size: 18px;
     }
+    .ribbon-right {
+      align-items: center;
+    }
 
     .table-container {
       display: flex;
@@ -39,9 +42,9 @@
     }
 
     table {
-      width: 100%;
+      width: 80%;
       max-width: 100%;
-      height: 100%;
+      height: 80%;
       border-spacing: 0px;
       padding: 0px;
       border: white;
@@ -125,6 +128,7 @@
       align-items: center;
       justify-content: space-between;
       border-radius: 7px;
+      justify-content: center;
     }
 
     .options li:hover {
@@ -164,15 +168,27 @@
     <h1 class="ribbon-text">
       Soccer Grid Game
     </h1>
-    <button id="how-to-button">
-      How to play
-    </button>
+    <div class = "ribbon-right">
+      <button id="how-to-button">
+        How to play
+      </button>
+      <button id = "stats">
+        Today's Statistics
+      </button>
+    </div>
   </div>
   <div id="popup" class="how-to-container">
     <div class="popup-content">
       <span id = "closeRulesButton" class="close">&times;</span>
       <h2>How to play</h2>
       <p>These are the rules.</p>
+    </div>
+  </div>
+  <div id="statistics-popup" class="how-to-container">
+    <div class="popup-content">
+      <span id = "closeStatisticsButton" class="close">&times;</span>
+      <h2>Statistics</h2>
+      <p>BADFSA.</p>
     </div>
   </div>
   <div id="search-popup" class="popup-container">
@@ -202,12 +218,12 @@
         </td>
         <td>
           <div class = "image-container" id = "column-1">
-            <img src = "ac_milan.png" alt = "AC Milan" class = "center">
+            <img src = "ac_milan.png" alt = "Milan" class = "center">
           </div>
         </td>
         <td>
           <div class = "image-container" id = "column-2">
-            <img src = "chelsea.png" alt = "Chelsea FC" class = "center">
+            <img src = "chelsea.png" alt = "Chelsea" class = "center">
           </div>
         </td>
         <td>
@@ -276,7 +292,7 @@
       <tr>
         <td>
           <div class = "image-container" id = "row-3">
-            <img src = "liverpool.png" alt = "Liverpool FC" class = "center">
+            <img src = "liverpool.png" alt = "Liverpool" class = "center">
           </div>
         </td>
         <td class = "border-cell" id = "cell7">
@@ -301,6 +317,6 @@
     </table>
   </div>
 </body>
-<script type = "text/javascript" src="bundle.js">
+<script type = "text/javascript" src="test.js">
 </script>
 </html>
