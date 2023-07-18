@@ -308,9 +308,8 @@ function handleAutofill(player_id) {
       const playerNames = data.map(player => player.PlayerName);
       let arr = [];
       let searchedVal = searchInp.value.toLowerCase();
-      arr = playerNames
-        .filter(data => data.toLowerCase().startsWith(searchedVal))
-        .map(data => `<li>${data}</li>`)
+      arr = playerNames.filter(name => name.toLowerCase().includes(searchedVal))
+        .map(name => `<li>${name}</li>`)
         .join("");
       options.innerHTML = arr ? arr : '<p>Player not found!</p>';
       const liItems = options.querySelectorAll("li");
